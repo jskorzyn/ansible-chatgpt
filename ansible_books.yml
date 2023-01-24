@@ -1,0 +1,39 @@
+---
+- name: OpenAI interaction examples
+  hosts: localhost
+  gather_facts: no
+  connection: local
+
+  vars_files: api_key.yml
+
+  tasks:
+    - name: Generate text with OpenAI
+      ansible.builtin.uri:
+        url: https://api.openai.com/v1/completions
+        method: POST
+        body: 
+         '{
+          "model": "text-davinci-003",
+          "prompt": "List 5 Ansible books:",
+          "temperature": 0.5,
+          "max_tokens": 200,
+          "top_p": 1.0,
+          "frequency_penalty": 0.52,
+          "presence_penalty": 0.5,
+          "stop": ["6."]
+         }'
+        headers:
+          Content-Type: "application/json"
+          Authorization: "Bearer {{ openai_api_token }}"
+      register: openai_response
+
+
+    # - name: show response
+    #   ansible.builtin.debug:
+    #     var: openai_response.json.choices[0].text
+        
+    - name: Write response to file
+      ansible.builtin.copy:
+        content: "{{ openai_response.json.choices[0].text }}"
+        dest: "ansible_books.txt"
+        mode: 0644
