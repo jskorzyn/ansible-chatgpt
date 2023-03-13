@@ -1,7 +1,0 @@
-
-
-1. Ansible for DevOps: Server and Configuration Management for Humans, 2nd Edition by Jeff Geerling 
-2. Ansible: Up and Running: Automating Configuration Management and Deployment the Easy Way by Lorin Hochstein 
-3. Learning Ansible 2: Leverage the power of automation to manage your IT infrastructure efficiently by Fabio Alessandro Locati 
-4. Mastering Ansible, 2nd Edition by Jesse Keating 
-5. Ansible Playbook Essentials by Akash Jain
